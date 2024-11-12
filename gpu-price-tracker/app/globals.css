@@ -44,7 +44,19 @@
 @font-face {
   font-family: 'Kinetika';
   src: url('../assets/fonts/Kinetika/Kinetika Light.ttf');
+  font-weight: 300;
 }
+@font-face {
+  font-family: 'Kinetika';
+  src: url('../assets/fonts/Kinetika/Kinetika Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Kinetika';
+  src: url('../assets/fonts/Kinetika/Kinetika Bold.ttf');
+  font-weight: 700;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

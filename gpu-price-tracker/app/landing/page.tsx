@@ -1,5 +1,5 @@
 "use client";
-import gsap from "gsap";
+import gsap, { Power3 } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollManufacturers from "@/components/ScrollManufacturers";
 import "./landing.scss";
@@ -11,7 +11,55 @@ export default function Landing() {
 
   useEffect(() => {
     gsap.fromTo(
-      ".gsap-stagger > *",
+      ".gsap-stagger > :nth-child(1)",
+      {
+        opacity: 0.001,
+        // y: 20,
+        x: 40,
+      },
+      {
+        opacity: 1,
+        // y: 0,
+        x: 0,
+        delay: 0,
+        stagger: 2,
+        duration: 1.5,
+        ease: Power3.easeOut,
+      }
+    );
+    gsap.fromTo(
+      ".gsap-stagger > :nth-child(2)",
+      {
+        opacity: 0.001,
+        // y: 20,
+        x: -80,
+      },
+      {
+        opacity: 1,
+        x: 0.0001,
+        delay: 0.4,
+        stagger: 2,
+        duration: 1.5,
+        ease: Power3.easeOut,
+      }
+    );
+    gsap.fromTo(
+      ".gsap-stagger > :nth-child(3)",
+      {
+        opacity: 0.001,
+        x: 120,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        delay: 0.4,
+        stagger: 2,
+        duration: 1.5,
+        ease: Power3.easeOut,
+      }
+    );
+    gsap.fromTo(
+      ".gsap-stagger > :nth-child(4)",
       {
         opacity: 0.001,
         y: 20,
@@ -20,8 +68,9 @@ export default function Landing() {
         opacity: 1,
         y: 0,
         delay: 1,
-        stagger: 0.8,
-        duration: 1,
+        stagger: 2,
+        duration: 2,
+        ease: Power3.easeOut,
       }
     );
 
@@ -45,12 +94,19 @@ export default function Landing() {
     <>
       <div id="scroller">
         <section className="main">
-          <div>
-            <div className="absolute flex w-full h-full z-10 justify-center items-center">
-              <div className="gsap-stagger font-kinetika font-bold mb-96 mt-80 flex flex-col items-center">
-                <span>GPU</span>
-                <span>PRICE</span>
-                <span>TRACKER</span>
+          <div className="flex flex-col p-8">
+            <nav className="flex justify-evenly self-center w-4/5 text-gray-400">
+              <span>Home</span>
+              <span>About</span>
+              <span>How it works</span>
+              <span>Browse</span>
+              <span>Test</span>
+            </nav>
+            <section className=" flex w-full h-screen z-10 justify-center items-center py-80">
+              <div className=" gsap-stagger text-[10rem] leading-8 font-kinetika font-bold  flex flex-col items-center gap-24">
+                <span className=" self-end">GPU</span>
+                <span className=" self-end  ">PRICE</span>
+                <span className=" self-end">TRACKER</span>
                 <div className=" text-3xl mt-20">
                   <input
                     onKeyUp={(e) => handleInput(e)}
@@ -59,10 +115,10 @@ export default function Landing() {
                   ></input>
                 </div>
               </div>
-            </div>
-            <div className="noiseOverlay">
+            </section>
+            {/* <div className="noiseOverlay flex justify-end h-screen">
               <video
-                className="mouse-md opacity-40"
+                className="w-4/5 h-screen mouse-md opacity-40"
                 loop={true}
                 muted
                 autoPlay
@@ -77,18 +133,25 @@ export default function Landing() {
                   type="video/mp4"
                 />
               </video>
-            </div>
+            </div> */}
           </div>
 
           <div data-scroll-section className=" h-screen flex flex-col">
-            <div className=" text-8xl font-kinetika font-extrabold m-32 w-full">
-              <h1> One stop design shop for your digital product 👋</h1>
+            <div className=" flex flex-col text-8xl font-kinetika font-light  w-full text-wrap px-32 mb-32 gap-8">
+              <h1 data-scroll data-scroll-speed="0.4">
+                {" "}
+                Welcome to GPU Price Tracker – Your Ultimate Resource for
+                Finding the Best GPU Deals👋
+              </h1>
+              <h2 data-scroll data-scroll-speed="0.1">
+                Explore prices across all major GPU manufacturers
+              </h2>
             </div>
             <div>
               <ScrollManufacturers />
             </div>
           </div>
-          <div>
+          {/* <div>
             <div className=" h-screen  text-sm font-kinetika m-32 leading-normal w-full">
               <h2 data-scroll data-scroll-speed="0.4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -97,9 +160,60 @@ export default function Landing() {
                 😬
               </p>
             </div>
-          </div>
+          </div> */}
+          <section className="flex w-full h-screen justify-center items-center p-32 gap-40">
+            <div data-scroll data-scroll-speed="0.1">
+              <h3>Up-to-Date Prices</h3>
+              <p>
+                We continuously update prices from trusted stores, ensuring you
+                always have the most current information.
+              </p>
+            </div>
+            <div data-scroll data-scroll-speed="0.2">
+              <h3>Comprehensive Store Coverage</h3>
+              <p>
+                See prices from multiple retailers, giving you a complete view
+                of where to find the most affordable GPUs.
+              </p>
+            </div>
+            <div data-scroll data-scroll-speed="0.3">
+              <h3>Smart Search Tools</h3>
+              <p>
+                Quickly compare models and specifications to find the perfect
+                GPU for your needs and budget.
+              </p>
+            </div>
+          </section>
+
+          <section className="flex flex-col w-full justify-center items-center p-32 bg-slate-300 text-black rounded-[50px]">
+            <div className="flex w-full gap-64">
+              <div className="flex flex-col w-1/2">
+                <h3>Test header</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quidem, ipsum. Impedit, delectus dolor maxime magni quae,
+                  ratione distinctio enim nostrum nisi odio animi soluta numquam
+                  repudiandae repellat perferendis modi magnam!
+                </p>
+              </div>
+              <div className="w-[500px] h-[500px] bg-slate-600"> image placeholder</div>
+            </div>
+            <div className="flex w-full gap-64">
+            <div className="w-[500px] h-[500px] bg-slate-600"> image placeholder</div>
+              <div className="flex flex-col w-1/2">
+                <h3>Test header</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quidem, ipsum. Impedit, delectus dolor maxime magni quae,
+                  ratione distinctio enim nostrum nisi odio animi soluta numquam
+                  repudiandae repellat perferendis modi magnam!
+                </p>
+              </div>
+            </div>
+          </section>
         </section>
 
+        {/* 
         <section className="horizontal horizontal-container flex ">
           <div className="pin-wrap">
             <div className="animation-wrap to-right flex justify-center items-center overflow-hidden  gap-20">
@@ -249,7 +363,7 @@ export default function Landing() {
               ></div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* <section className="blank">
           <h1>ScrollTrigger and Locomotive-Scroll</h1>
           <p>...</p>
